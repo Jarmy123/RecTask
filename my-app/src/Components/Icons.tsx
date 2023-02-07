@@ -1,6 +1,7 @@
 import React from 'react';
-import { deleteUser, editUser } from '../Api/apiRequests';
+import { deleteUser } from '../Api/apiRequests';
 import { IconsProps } from '../Interfaces/interfaces';
+import { toast } from 'react-toastify';
 
 export const AddUser = ({ size, color }: IconsProps) => {
 	return (
@@ -67,18 +68,31 @@ export const RemoveUser = ({
 	color: string;
 	id: number;
 }) => {
+	const userUpdatedNotification = () => toast('User deleted!');
+	const errorNotification = () => toast('Error');
+	const handleSubmitRequest = () => {
+		deleteUser(id)
+			.then(() => {
+				userUpdatedNotification();
+			})
+			.catch(() => {
+				errorNotification();
+			});
+	};
 	return (
-		<svg
-			onClick={() => deleteUser(id)}
-			fill={color}
-			width={size}
-			height={size}
-			viewBox="0 0 32 32"
-			version="1.1"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<title>remove</title>
-			<path d="M11.188 4.781c6.188 0 11.219 5.031 11.219 11.219s-5.031 11.188-11.219 11.188-11.188-5-11.188-11.188 5-11.219 11.188-11.219zM11.25 17.625l3.563 3.594c0.438 0.438 1.156 0.438 1.594 0 0.406-0.406 0.406-1.125 0-1.563l-3.563-3.594 3.563-3.594c0.406-0.438 0.406-1.156 0-1.563-0.438-0.438-1.156-0.438-1.594 0l-3.563 3.594-3.563-3.594c-0.438-0.438-1.156-0.438-1.594 0-0.406 0.406-0.406 1.125 0 1.563l3.563 3.594-3.563 3.594c-0.406 0.438-0.406 1.156 0 1.563 0.438 0.438 1.156 0.438 1.594 0z"></path>
-		</svg>
+		<>
+			<svg
+				onClick={handleSubmitRequest}
+				fill={color}
+				width={size}
+				height={size}
+				viewBox="0 0 32 32"
+				version="1.1"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<title>remove</title>
+				<path d="M11.188 4.781c6.188 0 11.219 5.031 11.219 11.219s-5.031 11.188-11.219 11.188-11.188-5-11.188-11.188 5-11.219 11.188-11.219zM11.25 17.625l3.563 3.594c0.438 0.438 1.156 0.438 1.594 0 0.406-0.406 0.406-1.125 0-1.563l-3.563-3.594 3.563-3.594c0.406-0.438 0.406-1.156 0-1.563-0.438-0.438-1.156-0.438-1.594 0l-3.563 3.594-3.563-3.594c-0.438-0.438-1.156-0.438-1.594 0-0.406 0.406-0.406 1.125 0 1.563l3.563 3.594-3.563 3.594c-0.406 0.438-0.406 1.156 0 1.563 0.438 0.438 1.156 0.438 1.594 0z"></path>
+			</svg>
+		</>
 	);
 };

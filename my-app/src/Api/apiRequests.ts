@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { UsersDto } from '../Interfaces/interfaces';
 
+//change url to simulate error
+const baseUrl = 'https://jsonplaceholder.typicode.com';
+
 export const getUsers = async (): Promise<UsersDto[] | undefined> => {
 	try {
-		const { data } = await axios.get(
-			'https://jsonplaceholder.typicode.com/users'
-		);
+		const { data } = await axios.get(`${baseUrl}/users`);
 		return data;
 	} catch (error) {
-		console.log(error);
+		throw new Error('Error');
 	}
 };
 
@@ -17,14 +18,10 @@ export const editUser = async (
 	userData: any
 ): Promise<(Partial<UsersDto> & { id: number }) | undefined> => {
 	try {
-		const { data } = await axios.put(
-			`https://jsonplaceholder.typicode.com/users/${id}`,
-			userData
-		);
-		console.log('UDAŁO SIE');
+		const { data } = await axios.put(`${baseUrl}/users/${id}`, userData);
 		return data;
 	} catch (error) {
-		console.log(error);
+		throw new Error('Error');
 	}
 };
 
@@ -32,14 +29,10 @@ export const addUser = async (
 	userData: any
 ): Promise<(Partial<UsersDto> & { id: number }) | undefined> => {
 	try {
-		const { data } = await axios.post(
-			`https://jsonplaceholder.typicode.com/users`,
-			userData
-		);
-		console.log('UDAŁO SIE');
+		const { data } = await axios.post(`${baseUrl}/users`, userData);
 		return data;
 	} catch (error) {
-		console.log(error);
+		throw new Error('Error');
 	}
 };
 
@@ -47,12 +40,9 @@ export const deleteUser = async (
 	id: number
 ): Promise<(Partial<UsersDto> & { id: number }) | undefined> => {
 	try {
-		const { data } = await axios.delete(
-			`https://jsonplaceholder.typicode.com/users/${id}`
-		);
-		console.log('UDAŁO SIE');
+		const { data } = await axios.delete(`${baseUrl}/users`);
 		return data;
 	} catch (error) {
-		console.log(error);
+		throw new Error('Error');
 	}
 };

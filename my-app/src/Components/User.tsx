@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { EditUser, RemoveUser } from './Icons';
-import { deleteUser } from '../Api/apiRequests';
 
 const User = ({
 	name,
