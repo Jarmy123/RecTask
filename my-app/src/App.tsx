@@ -5,6 +5,7 @@ import PhotosScreen from './Screens/PhotosScreen';
 import PostsScreen from './Screens/PostsScreen';
 import UsersScreen from './Screens/UsersScreen';
 import { Route, Routes } from 'react-router-dom';
+import UserForm from './Screens/UserForm';
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 					<Route path="/posts" element={<PostsScreen />} />
 					<Route path="/photos" element={<PhotosScreen />} />
 					<Route path="/users" element={<UsersScreen />} />
+					<Route path="/form" element={<UserForm />} />
 				</Routes>
 			</div>
 		</>

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { editUser, getUsers } from '../Api/apiRequests';
+import { getUsers } from '../Api/apiRequests';
 import { UsersDto } from '../Interfaces/interfaces';
 import { useAsyncEffect } from '../Hooks/useAsyncEffect';
 import User from '../Components/User';
 import { AddUser } from '../Components/Icons';
+import { Link } from 'react-router-dom';
 
 const UsersScreen = () => {
 	const [users, setUsers] = useState<UsersDto[]>([]);
@@ -12,17 +13,26 @@ const UsersScreen = () => {
 		const users = await getUsers();
 		if (users) {
 			setUsers(users);
-			editUser(1);
 		}
 	}, []);
 
 	return (
 		<div className="users-container">
 			<div className="add-user-container">
-				<AddUser color="black" size={30} />
+				<Link to="/form">
+					<AddUser color="black" size={30} />
+				</Link>
 			</div>
 			{users.map((user) => (
-				<User name={user.name} key={user.id} />
+				<User
+					name={user.name}
+					username={user.username}
+					email={user.email}
+					street={user.address.street}
+					city={user.address.city}
+					key={user.id}
+					id={user.id}
+				/>
 			))}
 		</div>
 	);

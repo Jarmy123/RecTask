@@ -25,4 +25,14 @@ export interface UsersDto {
 export interface IconsProps {
 	size: number;
 	color: string;
+	onClick?: () => void;
+}
+
+export interface UserFormInterface {
+	name: string;
+	username: string;
+	email: string;
+	street: string;
+	city: string;
+	id: number;
 }

@@ -13,17 +13,44 @@ export const getUsers = async (): Promise<UsersDto[] | undefined> => {
 };
 
 export const editUser = async (
-	id: number
+	id: number,
+	userData: any
 ): Promise<(Partial<UsersDto> & { id: number }) | undefined> => {
 	try {
 		const { data } = await axios.put(
 			`https://jsonplaceholder.typicode.com/users/${id}`,
-			{
-				name: 'Roman',
-				username: 'Jarmy',
-			}
+			userData
 		);
-		console.log({ tutaj: data });
+		console.log('UDAŁO SIE');
+		return data;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const addUser = async (
+	userData: any
+): Promise<(Partial<UsersDto> & { id: number }) | undefined> => {
+	try {
+		const { data } = await axios.post(
+			`https://jsonplaceholder.typicode.com/users`,
+			userData
+		);
+		console.log('UDAŁO SIE');
+		return data;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const deleteUser = async (
+	id: number
+): Promise<(Partial<UsersDto> & { id: number }) | undefined> => {
+	try {
+		const { data } = await axios.delete(
+			`https://jsonplaceholder.typicode.com/users/${id}`
+		);
+		console.log('UDAŁO SIE');
 		return data;
 	} catch (error) {
 		console.log(error);

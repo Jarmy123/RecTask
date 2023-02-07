@@ -1,4 +1,5 @@
 import React from 'react';
+import { deleteUser, editUser } from '../Api/apiRequests';
 import { IconsProps } from '../Interfaces/interfaces';
 
 export const AddUser = ({ size, color }: IconsProps) => {
@@ -18,9 +19,10 @@ export const AddUser = ({ size, color }: IconsProps) => {
 	);
 };
 
-export const EditUser = ({ size, color }: IconsProps) => {
+export const EditUser = ({ size, color, ...props }: IconsProps) => {
 	return (
 		<svg
+			{...props}
 			width={size}
 			height={size}
 			viewBox="0 0 20.109 20.109"
@@ -37,9 +39,9 @@ export const EditUser = ({ size, color }: IconsProps) => {
 					d="M3.29,4.69l1.4-1.4a1,1,0,0,1,1.4,0L11,8.2V11H8.2L3.29,6.09a1,1,0,0,1,0-1.4Z"
 					fill="none"
 					stroke="#000000"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeWidth="2"
 				/>
 				<path
 					id="primary-2"
@@ -47,18 +49,27 @@ export const EditUser = ({ size, color }: IconsProps) => {
 					d="M11.62,3.16c.21-.05.43-.09.65-.12A6,6,0,0,1,19,9a5.94,5.94,0,0,1-1.34,3.77,1,1,0,0,0,.28,1.45A7,7,0,0,1,21,20a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1,7,7,0,0,1,2.11-5"
 					fill="none"
 					stroke="#000000"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeWidth="2"
 				/>
 			</g>
 		</svg>
 	);
 };
 
-export const RemoveUser = ({ size, color }: IconsProps) => {
+export const RemoveUser = ({
+	size,
+	color,
+	id,
+}: {
+	size: number;
+	color: string;
+	id: number;
+}) => {
 	return (
 		<svg
+			onClick={() => deleteUser(id)}
 			fill={color}
 			width={size}
 			height={size}
