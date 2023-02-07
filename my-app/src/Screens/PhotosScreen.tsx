@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PhotosScreen = () => {
-	return <div>PhotosScreen</div>;
+	return <h1>PhotosScreen</h1>;
 };
 
 export default PhotosScreen;
