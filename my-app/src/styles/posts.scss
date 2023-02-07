@@ -3,6 +3,12 @@
 	height: 100%;
 }
 
-.post-container:last-child {
-	padding-bottom: 100px;
+.post-container {
+	border: 3px dotted $color-gray;
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 50px;
+	&:last-child {
+		padding-bottom: 100px;
+	}
 }
