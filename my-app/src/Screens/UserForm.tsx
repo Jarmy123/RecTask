@@ -65,38 +65,45 @@ const UserForm = () => {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit(handleSubmitRequest)}>
-				<div className="userForm-container">
-					<input
-						{...register('name', { required: true, maxLength: 15 })}
-						placeholder="Name"
-					/>
-					{errors.name && (
-						<p className="validation-msg">
-							Name is required and max length is 15
-						</p>
-					)}
-					<input {...register('username')} placeholder="Username" />
-					<input
-						{...register('email', {
-							required: true,
-							pattern: emailPattern,
-						})}
-						placeholder="Email"
-					/>
-					{errors.email && (
-						<p className="validation-msg">Please check the Email</p>
-					)}
-					<input {...register('street')} placeholder="Street" />
-					<input {...register('city')} placeholder="City" />
-				</div>
-			</form>
-			<button onClick={() => setShowConfirmationModal(true)}>Open Modal</button>
-			<Modal
-				isVisible={showConfirmationModal}
-				setIsVisible={setShowConfirmationModal}
-				handleSubmit={handleSubmit(handleSubmitRequest)}
-			/>
+			<div className="userForm-container">
+				<form onSubmit={handleSubmit(handleSubmitRequest)}>
+					<div>
+						<input
+							{...register('name', { required: true, maxLength: 15 })}
+							placeholder="Name"
+						/>
+						{errors.name && (
+							<p className="validation-msg">
+								Name is required and max length is 15
+							</p>
+						)}
+						<input {...register('username')} placeholder="Username" />
+						<input
+							{...register('email', {
+								required: true,
+								pattern: emailPattern,
+							})}
+							placeholder="Email"
+						/>
+						{errors.email && (
+							<p className="validation-msg">Please check the Email</p>
+						)}
+						<input {...register('street')} placeholder="Street" />
+						<input {...register('city')} placeholder="City" />
+					</div>
+				</form>
+				<button
+					className="open-modal-btn"
+					onClick={() => setShowConfirmationModal(true)}
+				>
+					Open Modal
+				</button>
+				<Modal
+					isVisible={showConfirmationModal}
+					setIsVisible={setShowConfirmationModal}
+					handleSubmit={handleSubmit(handleSubmitRequest)}
+				/>
+			</div>
 		</>
 	);
 };

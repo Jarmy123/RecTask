@@ -20,6 +20,7 @@
 }
 
 .btn {
+	width: 100%;
 	padding: 10px;
 	border: none;
 	color: $color-white;
@@ -38,4 +39,11 @@
 
 .hide-modal {
 	display: none;
+}
+
+.open-modal-btn {
+	margin-top: 20px;
+	background-color: $color-white;
+	border: none;
+	padding: 10px;
 }

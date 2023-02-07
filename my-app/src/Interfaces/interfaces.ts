@@ -36,3 +36,13 @@ export interface UserFormInterface {
 	city: string;
 	id: number;
 }
+
+export interface PostDto extends PostProps {
+	userId: number;
+}
+
+export interface PostProps {
+	id: number;
+	title: string;
+	body: string;
+}
